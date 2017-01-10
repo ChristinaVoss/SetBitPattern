@@ -7,7 +7,6 @@ Solved exercise 8 Chapter 11 from Programming in C by Kochan - Bitwise operators
 
 	void bitpat_set(unsigned int *number, unsigned int setTo, int n, int numBits);
 	int int_size(unsigned int num);
-	int power(int base, int exponent);
 
 	int main(void)
 	{
@@ -27,7 +26,7 @@ Solved exercise 8 Chapter 11 from Programming in C by Kochan - Bitwise operators
     	int sizeNum = int_size(*number); // Find size of number
 	
     	// set "ones" to have as many 1s as numBits (so 4 numBits = 1111) by calculating to power and subtracting one
-    	int ones = power(2, numBits) -1;
+    	int ones = (1 << numBits) -1;
 	
     	// Move the "ones" bits to the position you want to swap numbers in "number" and XOR with number (will remove all unwanted 1s)
     	*number ^= (ones <<= (sizeNum -(n+numBits)));
@@ -50,10 +49,3 @@ Solved exercise 8 Chapter 11 from Programming in C by Kochan - Bitwise operators
     	return size;
 	}
 
-	int power(int base, int exponent)
-	{
-    	if (exponent == 0)
-        	return 1;
-    	else
-    	    return (base*power(base, exponent-1));
-	}
